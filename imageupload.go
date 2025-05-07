@@ -10,11 +10,11 @@ import (
 )
 
 type GCloudSEvent struct {
-	Bucket			string `json:"bucket"`
-	Name			string `json:"name"`
-	Metageneration	string `json:"metageneration"`
-	TimeCreated		string `json:"timeCreated"`
-	Updated			string `json:"updated"`
+	Bucket         string `json:"bucket"`
+	Name           string `json:"name"`
+	Metageneration string `json:"metageneration"`
+	TimeCreated    string `json:"timeCreated"`
+	Updated        string `json:"updated"`
 }
 
 func init() {
@@ -22,9 +22,7 @@ func init() {
 	functions.CloudEvent("ImageUploaded", ImageUploaded)
 }
 
-
-func ImageUploaded(ctx context.Context, e cloudevents.Event)
-error {
+func ImageUploaded(ctx context.Context, e cloudevents.Event) error {
 	var payload GCloudSEvent
 
 	if err := e.DataAs(&payload); err != nil {
